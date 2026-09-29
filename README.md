@@ -1,35 +1,29 @@
 # NetScan 🔍
 
-NetScan is a Python-based network and port scanning tool designed for learning about network discovery and basic security testing.
+NetScan is a Python-based network and port scanning tool with a graphical interface built using CustomTkinter.
 
-> **⚠️ Important:** Use NetScan only on networks, devices, and systems that you own or have explicit permission to test.
-
----
+> ⚠️ **Important:** Use NetScan only on systems and networks that you own or have explicit permission to test.
 
 ## ✨ Features
 
 * 🔎 Network scanning
 * 🚪 Port scanning
-* 🌐 Host discovery
-* ⚡ Simple command-line interface
-* 🐍 Written in Python
-* 💻 Works from PowerShell, Command Prompt, or Linux terminal
+* 🖥️ Graphical user interface
+* 🐍 Python-based
+* 💻 Works on Linux and Windows
 
 ---
 
 ## 📋 Requirements
 
-Before installing NetScan, make sure you have:
-
 * Python 3.10 or newer
 * Git
-* An internet/network connection for network scanning
 * Permission to scan the target system
 
-Check your Python installation:
+Check Python:
 
 ```bash
-python --version
+python3 --version
 ```
 
 Check Git:
@@ -40,7 +34,7 @@ git --version
 
 ---
 
-## 📥 Installation
+# 📥 Installation on Kali Linux
 
 ### 1. Clone the repository
 
@@ -54,168 +48,188 @@ git clone https://github.com/eliortalderson-lgtm/NetScan.git
 cd NetScan
 ```
 
-### 3. Check the files
+### 3. Install Python virtual-environment support
+
+Kali Linux protects its system Python environment. Therefore, NetScan should be installed inside a virtual environment.
+
+Run:
 
 ```bash
-dir
+sudo apt update
+sudo apt install python3-venv -y
 ```
 
-On Linux/macOS:
+### 4. Create a virtual environment
 
 ```bash
-ls
+python3 -m venv .venv
 ```
 
-You should see:
+### 5. Activate the virtual environment
+
+```bash
+source .venv/bin/activate
+```
+
+After activation, your terminal should show `(.venv)` before the prompt.
+
+For example:
 
 ```text
-netscan.py
-README.md
+(.venv) kali@kali:~/NetScan$
 ```
 
----
+### 6. Install NetScan dependencies
 
-## ▶️ Running NetScan
+Install CustomTkinter:
 
-Run the program with:
+```bash
+pip install customtkinter
+```
+
+### 7. Run NetScan
 
 ```bash
 python netscan.py
 ```
 
-Follow the instructions displayed by the program.
-
-If your system uses `python3`, use:
-
-```bash
-python3 netscan.py
-```
-
 ---
 
-## 🔍 Network Scanning
+# 🪟 Installation on Windows
 
-NetScan can be used to discover hosts on a network, depending on the functionality implemented in `netscan.py`.
-
-Only provide network ranges that you are authorized to scan.
-
-Example:
-
-```text
-Enter target network:
-192.168.1.0/24
-```
-
----
-
-## 🚪 Port Scanning
-
-NetScan can also be used to check ports on an authorized target.
-
-Example:
-
-```text
-Enter target:
-192.168.1.10
-
-Enter port:
-80
-```
-
-For a range of ports, use the format supported by the program.
-
-Example:
-
-```text
-80-443
-```
-
-> The exact commands and inputs depend on the current implementation of `netscan.py`.
-
----
-
-## 🧪 Example Workflow
-
-A typical workflow is:
+Open PowerShell and clone the repository:
 
 ```powershell
 git clone https://github.com/eliortalderson-lgtm/NetScan.git
+```
+
+Enter the directory:
+
+```powershell
 cd NetScan
+```
+
+Create a virtual environment:
+
+```powershell
+python -m venv .venv
+```
+
+Activate it:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Install CustomTkinter:
+
+```powershell
+pip install customtkinter
+```
+
+Run NetScan:
+
+```powershell
 python netscan.py
 ```
 
-Then enter a target that you are authorized to test.
-
 ---
 
-## 🛠️ Troubleshooting
+# ▶️ Running NetScan
 
-### Python is not recognized
+## Kali Linux
 
-If you see:
-
-```text
-'python' is not recognized as an internal or external command
-```
-
-Install Python and make sure **Add Python to PATH** is enabled during installation.
-
-Then restart PowerShell and run:
-
-```powershell
-python --version
-```
-
----
-
-### Git is not recognized
-
-If you see:
-
-```text
-'git' is not recognized as the name of a cmdlet
-```
-
-Install Git and make sure Git is added to your system PATH.
-
-Then restart PowerShell:
-
-```powershell
-git --version
-```
-
----
-
-### Permission denied
-
-Some operating systems or networks may restrict certain network operations.
-
-Make sure:
-
-* You have permission to scan the target.
-* Your firewall is not blocking the program.
-* You are using the correct target address.
-
----
-
-## 📁 Project Structure
-
-```text
-NetScan/
-│
-├── netscan.py
-└── README.md
-```
-
----
-
-## 🔄 Updating NetScan
-
-If you cloned the repository and want the latest version:
+Activate the virtual environment:
 
 ```bash
+cd ~/NetScan
+source .venv/bin/activate
+```
+
+Then:
+
+```bash
+python netscan.py
+```
+
+## Windows
+
+Activate the virtual environment:
+
+```powershell
 cd NetScan
-git pull
+.venv\Scripts\Activate.ps1
+```
+
+Then:
+
+```powershell
+python netscan.py
+```
+
+---
+
+# 📦 Dependencies
+
+NetScan currently requires:
+
+```text
+customtkinter
+```
+
+You can install the dependency manually with:
+
+```bash
+pip install customtkinter
+```
+
+A `requirements.txt` file can also be used for easier installation.
+
+---
+
+# 🛠️ Troubleshooting
+
+## `ModuleNotFoundError: No module named 'customtkinter'`
+
+Make sure your virtual environment is activated.
+
+Kali Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+Then install the dependency:
+
+```bash
+pip install customtkinter
+```
+
+Run:
+
+```bash
+python netscan.py
+```
+
+---
+
+## `externally-managed-environment`
+
+If you see:
+
+```text
+error: externally-managed-environment
+```
+
+Do **not** install packages directly into Kali's system Python.
+
+Instead, create and activate a virtual environment:
+
+```bash
+sudo apt install python3-venv -y
+python3 -m venv .venv
+source .venv/bin/activate
+pip install customtkinter
 ```
 
 Then run:
@@ -226,29 +240,102 @@ python netscan.py
 
 ---
 
-## 🔐 Responsible Use
+## `python` command not found
+
+Try:
+
+```bash
+python3 --version
+```
+
+On Kali Linux, use:
+
+```bash
+python3 netscan.py
+```
+
+after activating the virtual environment.
+
+---
+
+## Git is not installed
+
+Install Git on Kali:
+
+```bash
+sudo apt update
+sudo apt install git -y
+```
+
+Check:
+
+```bash
+git --version
+```
+
+---
+
+# 📁 Project Structure
+
+```text
+NetScan/
+│
+├── netscan.py
+├── README.md
+└── .venv/
+```
+
+> `.venv/` is a local virtual environment and should **not** be uploaded to GitHub.
+
+Add `.venv/` to `.gitignore`:
+
+```text
+.venv/
+__pycache__/
+*.pyc
+```
+
+---
+
+# 🔐 Responsible Use
 
 NetScan is intended for:
 
 * Learning network security
 * Testing your own devices
 * Testing your own network
-* Authorized penetration-testing labs
-* Educational cybersecurity environments
+* Authorized security testing
+* Educational cybersecurity labs
 
-Do **not** scan systems or networks without authorization.
+Do not scan systems or networks without authorization.
 
 The author is not responsible for misuse of this tool.
 
 ---
 
-## 📜 License
+# 🔄 Updating NetScan
 
-Add your preferred open-source license before publishing the project.
+To update the project:
+
+```bash
+git pull
+```
+
+If you are using Kali, activate the virtual environment afterward if necessary:
+
+```bash
+source .venv/bin/activate
+```
+
+Then run:
+
+```bash
+python netscan.py
+```
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 Created by **eliortalderson-lgtm**
 
